@@ -3,20 +3,18 @@ namespace Simplicity.Debug.Editor
     using System.Collections.Generic;
     using System.Linq;
 
-    using JetBrains.Annotations;
-
     using Unity.CodeEditor;
 
     using UnityEditor;
     using UnityEditor.Build;
 
-    public sealed class DebugAllocCounterMessages
+    public sealed class DebugEnterExitScopeMessages
     {
-        private const string OUTPUT_MESSAGES = "Simplicity/Debug/AllocCounter/Output Logs";
+        private const string OUTPUT_MESSAGES = "Simplicity/Debug/EnterExitScope/Output Debug Logs";
 
-        private const string DO_NOT_OUTPUT_MESSAGES = "Simplicity/Debug/AllocCounter/Don't Output Logs";
+        private const string DO_NOT_OUTPUT_MESSAGES = "Simplicity/Debug/EnterExitScope/Don't Output Debug Logs";
 
-        private const string LOG_MESSAGES_KEY = "LogAllocCounter";
+        private const string LOG_ENTER_EXIT_SCOPE_MESSAGES_KEY = "LogEnterExitScope";
 
         private const string DEBUG_SYMBOL = "DEBUG_ENTER_EXIT_SCOPE";
         
@@ -24,17 +22,17 @@ namespace Simplicity.Debug.Editor
         {
             get
             {
-                if (!EditorPrefs.HasKey(LOG_MESSAGES_KEY))
+                if (!EditorPrefs.HasKey(LOG_ENTER_EXIT_SCOPE_MESSAGES_KEY))
                 {
-                    EditorPrefs.SetBool(LOG_MESSAGES_KEY, true);
+                    EditorPrefs.SetBool(LOG_ENTER_EXIT_SCOPE_MESSAGES_KEY, true);
                 }
 
-                return EditorPrefs.GetBool(LOG_MESSAGES_KEY, true);
+                return EditorPrefs.GetBool(LOG_ENTER_EXIT_SCOPE_MESSAGES_KEY, true);
             }
-            set => EditorPrefs.SetBool(LOG_MESSAGES_KEY, value);
+            set => EditorPrefs.SetBool(LOG_ENTER_EXIT_SCOPE_MESSAGES_KEY, value);
         }
 
-        [MenuItem(OUTPUT_MESSAGES, true, 0)]
+        [MenuItem(OUTPUT_MESSAGES, true, priority = 0)]
         private static bool ShowOutputMessage()
         {
             bool shouldShowMessage = ShouldShowMessages;
@@ -60,7 +58,7 @@ namespace Simplicity.Debug.Editor
         [MenuItem(DO_NOT_OUTPUT_MESSAGES, true, priority = 1)]
         private static bool ShowDoNotOutputMessage()
         {
-            bool shouldShowMessage = ShouldShowMessages;
+            bool shouldShowMessage =  ShouldShowMessages;
             
             Menu.SetChecked(DO_NOT_OUTPUT_MESSAGES, !shouldShowMessage);
             return shouldShowMessage;

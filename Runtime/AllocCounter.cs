@@ -1,4 +1,4 @@
-namespace Simplicity.Debug
+namespace Simplicity.Debug.Runtime
 {
     using System;
     using System.Diagnostics;
