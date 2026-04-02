@@ -1,0 +1,17 @@
+{
+  "name": "com.simpleman.debug",
+  "displayName": "Simplicity Debug",
+  "version": "0.1.0",
+  "unity": "6000.3",
+  "unityRelease": "8f1",
+  "description": "Set of tools to help with debugging.",
+  "dependencies": {
+    "com.unity.test-framework": "1.6.0"
+  },
+  "author": {
+    "name": "SimpleMan"
+  },
+  "changelogUrl": "https://example.com/changelog.html",
+  "documentationUrl": "https://example.com/",
+  "licensesUrl": "https://example.com/licensing.html"
+}
